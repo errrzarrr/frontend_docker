@@ -16,7 +16,7 @@ before_install:
 # You may want to set the following property if your travis build 
 # fails with “rakefile not found” by adding to the top of your .travis.yml file: language: generic 
 script:
-  - docker run -e CI=true errrzarrr/frontend npm run test
+  - docker run -e CI=true errrzarrr/frontend npm run test -- --coverage
 
 
 # Tell Travis how to deply our code to AWS
