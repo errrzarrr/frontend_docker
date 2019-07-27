@@ -1,0 +1,23 @@
+version: '3'
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"
+    volumes:
+      # make a reference of current dir into instance's /app dir
+      - .:/app
+      # this is an exception, keep instace's node_modules without outter reference
+      - /app/node_modules
+  test:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      # make a reference of current dir into instance's /app dir
+      - .:/app
+      # this is an exception, keep instace's node_modules without outter reference
+      - /app/node_modules
+    command: ["npm", "run", "test"]

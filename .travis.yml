@@ -1,0 +1,24 @@
+# We need sudo permissions
+sudo: required
+
+# tell Travis we need a copy of docker running
+services:
+  - docker
+
+# Build our image using Dockerfile.dev (?)
+before_install:
+  # we have to provide a tag name because we don't have an easy way to grab image id
+  # given name won't matter too much because it's just an internal name, 
+  # but meaninful naming is a best-practice	
+  - docker build -t errrzarrr/frontend -f Dockerfile.dev .
+
+# Tell Travis how to run our test suite
+# You may want to set the following property if your travis build 
+# fails with “rakefile not found” by adding to the top of your .travis.yml file: language: generic 
+script:
+  - docker run -e CI=true errrzarrr/frontend npm run test
+
+
+# Tell Travis how to deply our code to AWS
+
+

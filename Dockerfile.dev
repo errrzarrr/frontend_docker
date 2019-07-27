@@ -1,0 +1,20 @@
+# This docker image is for DEVELOPMENT purposes only,
+# Production details should be kept on another file.
+#
+# Since probably this file is named different as docker expects,
+# you might want to run it as follows:
+#	docker build -f <this_file_name> .
+#	run with volumes: docker run -p  PORT:PORT -v ./app/dir:/container/dir -v exception_folder (node_module in this case) <img_id>
+#	docker run -p3000:3000  -v $(pwd):/app -v /app/node_modules  <img_id>
+
+#
+
+FROM node:alpine
+
+WORKDIR '/app'
+COPY ./package.json .
+RUN npm install
+
+COPY . .
+
+CMD ["npm","run","start"]
