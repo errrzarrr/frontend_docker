@@ -25,7 +25,7 @@ deploy:
   region: "us-east-2"
   app: "fronted_docker"
   env: "FrontedDocker-env"
-  bucket_name: "" # in S3 section
+  bucket_name: "elasticbeanstalk-us-east-2-615083051875" # S3 bucket created atuomatically for you
   bucket_path: "frontend_docker" # same as app name, usually
   on:
     # deploy only features that were merged into 'master' branch
