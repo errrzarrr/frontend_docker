@@ -20,5 +20,17 @@ script:
 
 
 # Tell Travis how to deply our code to AWS
-
-
+deploy:
+  provider: elasticbeanstalk # or DO or hero
+  region: "us-east-2"
+  app: "fronted_docker"
+  env: "FrontedDocker-env"
+  bucket_name: "" # in S3 section
+  bucket_path: "frontend_docker" # same as app name, usually
+  on:
+    # deploy only features that were merged into 'master' branch
+    branch: master
+  access_key_id: "$AWS_PUBLIC_KEY"
+  # WARNING: AWS will only show you it once and no more
+  secret_access_key:
+    secure: "$AWS_PRIVATE_KEY"

@@ -17,4 +17,6 @@ RUN npm run build
 # to where nginx serves it from (/usr/share/nginx/html)
 # nginx gets started automatically by container
 FROM nginx
+# Instruction for AWS EB
+EXPOSE 80
 COPY --from=frontend_builder /app/build /usr/share/nginx/html
